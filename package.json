@@ -13,7 +13,7 @@
     "reinstall": "rimraf node_modules && npm install",
     "build": "rimraf dist && tsc",
     "start": "node dist/server.js",
-    "dev": "tsnd src/server.ts",
+    "dev": "tsnd --exit-child --transpile-only --ignore_watch node_modules src/server.ts",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --passWithNoTests --no-cache --runInBand",
@@ -24,6 +24,8 @@
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/express": "^4.17.13",
     "@types/jest": "^27.0.2",
     "@types/node": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
@@ -41,6 +43,8 @@
   },
   "dependencies": {
     "@prisma/client": "^3.9.2",
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.2",
     "rimraf": "^3.0.2"
   }
 }
