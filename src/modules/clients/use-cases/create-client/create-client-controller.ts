@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import { CreateClientParams, CreateClientUsecase } from './create-client-usecase';
+import { CreateClientParams } from './create-client-interfaces';
+import { CreateClientUsecase } from './create-client-usecase';
 
 export class CreateClientController {
   async handle(request: Request, response: Response): Promise<Response> {

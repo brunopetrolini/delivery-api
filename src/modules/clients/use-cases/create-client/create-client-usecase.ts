@@ -1,14 +1,6 @@
 import { hash } from 'bcrypt';
 import { prisma } from '../../../../database/prisma-client';
-
-export interface CreateClientParams {
-  username: string;
-  password: string;
-}
-
-interface CreateClientResult {
-  id: string;
-}
+import { CreateClientParams, CreateClientResult } from './create-client-interfaces';
 
 export class CreateClientUsecase {
   async execute(client: CreateClientParams): Promise<CreateClientResult> {
