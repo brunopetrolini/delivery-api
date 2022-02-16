@@ -18,7 +18,7 @@ export class AuthenticateClientUsecase {
       throw new Error('Incorrect username or password.');
     }
 
-    const validPassword = compare(client.password, user.password);
+    const validPassword = await compare(user.password, client.password);
 
     if (!validPassword) {
       throw new Error('Incorrect username or password.');
