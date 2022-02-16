@@ -1,7 +1,7 @@
 import { hash } from 'bcrypt';
-import { prisma } from '../../../database/prisma-client';
+import { prisma } from '../../../../database/prisma-client';
 
-interface CreateClientParams {
+export interface CreateClientParams {
   username: string;
   password: string;
 }
