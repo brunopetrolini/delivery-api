@@ -13,7 +13,7 @@
     "reinstall": "rimraf node_modules && npm install",
     "build": "rimraf dist && tsc",
     "start": "node dist/server.js",
-    "dev": "tsnd --exit-child --transpile-only --ignore_watch node_modules src/server.ts",
+    "dev": "tsnd --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --passWithNoTests --no-cache --runInBand",
