@@ -8,12 +8,18 @@ export class CreateDeliveryUsecase {
         item_name: delivery.itemName,
         id_client: delivery.idClient,
       },
+      include: {
+        client: true,
+      },
     });
 
     return {
       id: createdDelivery.id,
       itemName: createdDelivery.item_name,
-      idClient: createdDelivery.id_client,
+      client: {
+        id: createdDelivery.client.id,
+        username: createdDelivery.client.username,
+      },
       createdAt: createdDelivery.created_at,
     };
   }

@@ -3,9 +3,14 @@ export interface CreateDeliveryParams {
   idClient: string;
 }
 
+interface Client {
+  id: string;
+  username: string;
+}
+
 export interface CreateDeliveryResult {
   id: string;
   itemName: string;
-  idClient: string;
+  client: Client;
   createdAt: Date;
 }
