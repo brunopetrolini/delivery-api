@@ -26,6 +26,6 @@ const createDeliveryController = new CreateDeliveryController();
 routes.post('/deliveries', ensureAuthenticateClient, createDeliveryController.handle);
 
 const findAvailableDeliveriesController = new FindAvailableDeliveriesController();
-routes.post('deliveries', ensureAuthenticateDeliveryman, findAvailableDeliveriesController.handle);
+routes.get('/deliveries/available', ensureAuthenticateDeliveryman, findAvailableDeliveriesController.handle);
 
 export { routes };
