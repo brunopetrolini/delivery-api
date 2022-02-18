@@ -4,7 +4,8 @@ import { CreateDeliveryUsecase } from './create-delivery-usecase';
 
 export class CreateDeliveryController {
   async handle(request: Request, response: Response): Promise<Response> {
-    const { itemName, idClient } = request.body as CreateDeliveryParams;
+    const { itemName } = request.body as CreateDeliveryParams;
+    const idClient = request.userId;
 
     const createDeliveryUsecase = new CreateDeliveryUsecase();
     const result = await createDeliveryUsecase.execute({ itemName, idClient });
