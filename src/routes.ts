@@ -5,6 +5,7 @@ import { AuthenticateClientController } from './modules/accounts/authenticate-cl
 import { AuthenticateDeliverymanController } from './modules/accounts/authenticate-deliveryman/authenticate-deliveryman-controller';
 import { CreateClientController } from './modules/clients/use-cases/create-client/create-client-controller';
 import { CreateDeliveryController } from './modules/deliveries/create-delivery/create-delivery-controller';
+import { FindAllByClientController } from './modules/deliveries/find-all-by-client/find-all-by-client-controller';
 import { FindAvailableDeliveriesController } from './modules/deliveries/find-available-deliveries/find-available-deliveries-controller';
 import { UpdateDeliverymanController } from './modules/deliveries/update-deliveryman/update-deliveryman-controller';
 import { CreateDeliverymanController } from './modules/deliveryman/use-cases/create-deliveryman/create-deliveryman-controller';
@@ -31,5 +32,8 @@ routes.get('/deliveries/available', ensureAuthenticateDeliveryman, findAvailable
 
 const updateDeliverymanController = new UpdateDeliverymanController();
 routes.put('/deliveries/associate/:idDelivery', ensureAuthenticateDeliveryman, updateDeliverymanController.handle);
+
+const findAllByClientController = new FindAllByClientController();
+routes.get('/deliveries/by-client', ensureAuthenticateClient, findAllByClientController.handle);
 
 export { routes };

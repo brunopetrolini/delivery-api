@@ -1,15 +1,15 @@
 import { prisma } from '../../../database/prisma-client';
-import { FindAvailableDeliveriesResult } from './find-available-deliveries-interfaces';
+import { FindAllByClientResult } from './find-all-by-client-interfaces';
 
-export class FindAvailableDeliveriesUsecase {
-  async execute(): Promise<FindAvailableDeliveriesResult[]> {
+export class FindAllByClientUsecase {
+  async execute(idClient: string): Promise<FindAllByClientResult[]> {
     const deliveries = await prisma.deliveries.findMany({
       where: {
-        end_at: null,
-        id_deliveryman: null,
+        id_client: idClient,
       },
       include: {
         client: true,
+        deliveryman: true,
       },
     });
 
@@ -20,8 +20,13 @@ export class FindAvailableDeliveriesUsecase {
         id: delivery.client.id,
         username: delivery.client.username,
       },
+      deliveryman: {
+        id: delivery.deliveryman?.id,
+        username: delivery.deliveryman?.username,
+      },
       createdAt: delivery.created_at,
-    }) as FindAvailableDeliveriesResult);
+      endAt: delivery.end_at,
+    }) as FindAllByClientResult);
 
     return formattedDeliveries;
   }
