@@ -9,6 +9,7 @@ import { FindAllByClientController } from './modules/deliveries/find-all-by-clie
 import { FindAllByDeliverymanController } from './modules/deliveries/find-all-by-deliveryman/find-all-by-deliveryman-controller';
 import { FindAvailableDeliveriesController } from './modules/deliveries/find-available-deliveries/find-available-deliveries-controller';
 import { UpdateDeliverymanController } from './modules/deliveries/update-deliveryman/update-deliveryman-controller';
+import { UpdateEndDateController } from './modules/deliveries/update-end-date/update-end-date-controller';
 import { CreateDeliverymanController } from './modules/deliveryman/use-cases/create-deliveryman/create-deliveryman-controller';
 
 const routes = Router();
@@ -39,5 +40,8 @@ routes.put('/deliveries/associate/:idDelivery', ensureAuthenticateDeliveryman, u
 
 const findAllByClientController = new FindAllByClientController();
 routes.get('/deliveries/by-client', ensureAuthenticateClient, findAllByClientController.handle);
+
+const updateEndDateController = new UpdateEndDateController();
+routes.put('/deliveries/finalize/:idDelivery', ensureAuthenticateDeliveryman, updateEndDateController.handle);
 
 export { routes };
