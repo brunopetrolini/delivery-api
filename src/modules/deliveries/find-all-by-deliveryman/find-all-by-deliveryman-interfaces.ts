@@ -1,6 +1,6 @@
 import { Clients, Deliveryman } from '@prisma/client';
 
-export interface FindAllByClientResult {
+export interface FindAllByDeliverymanResult {
   id: string;
   itemName: string;
   client: Partial<Clients>;
